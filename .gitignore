@@ -35,6 +35,8 @@ wheels/
 *.onnx
 
 # Flutter / Dart
+!mobile/lib/
+!mobile/lib/**
 mobile/.dart_tool/
 mobile/.flutter-plugins
 mobile/.flutter-plugins-dependencies

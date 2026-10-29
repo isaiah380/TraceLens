@@ -4,7 +4,7 @@
 TraceLens is built exclusively for defensive security assessment and user fraud-awareness. It strictly adheres to privacy-by-design guidelines:
 
 1. **Zero Raw Secret Collection**:
-   * TraceLens never prompts users for OTPs, PINs, passwords, or payment cards.
+   * The scanner should not be given OTPs, PINs, passwords, or payment card data. The prototype's email/password sign-in is device-local and is not a production identity service; scan history is local and not cloud-synced.
    * Legitimate warning advisories containing phrases like "Do not share OTP" are distinguished from active credential theft attempts.
 
 2. **No Automatic Network Fetching of Untrusted Targets**:

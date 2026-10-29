@@ -1,0 +1,10 @@
+# Lightweight deployment dependencies. Omitting torch/transformers keeps the
+# service small; the backend automatically uses its existing rule-based fallback.
+fastapi==0.115.8
+uvicorn==0.34.0
+pydantic==2.10.6
+pydantic-settings==2.8.0
+python-dotenv==1.0.1
+requests==2.32.3
+numpy>=1.26,<2.3
+joblib>=1.4.0

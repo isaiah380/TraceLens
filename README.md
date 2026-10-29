@@ -14,6 +14,11 @@ TraceLens is a mobile application and machine learning defensive cybersecurity p
 * **Safe QR Code Scanner**: Decodes camera QR barcodes and assesses destination links before opening.
 * **Explainable Security Assessments**: Clear risk levels (`Low`, `Medium`, `High`, `Critical`), risk scores (0–100%), and human-readable signal justifications.
 * **Persistent Local History**: SQLite-backed history tracking with truncated 60-character previews for privacy.
+* **Signed-in Navigation**: Home, Check, Activity, Learn and Profile sections, with bottom navigation on phones and a side rail on wide screens.
+* **Activity Insights**: Seven-day scan counts, message/link/QR filters, per-item deletion, clear history and CSV copy/export.
+* **Safety Guide**: In-app scam warning signs and response steps. This is an educational guide, not a live scam trends feed.
+* **Android Share to Scan**: Share text or a URL from another Android app to open the matching TraceLens scanner.
+* **Assessment Actions**: Contextual next steps and a copyable assessment summary that excludes the original message or link.
 * **Pretrained ML + Heuristic Fallback**: Integrated with Hugging Face (`Horizon-Labs/phishing-scam-detector-base`) with an automated fallback engine.
 * **Optional URL ML Pipeline**: Random Forest training and evaluation scripts for structural link features.
 
@@ -113,4 +118,4 @@ TraceLens/
 
 ## 🔒 Security & Privacy Notice
 
-TraceLens is built exclusively for defensive security research and awareness. It will never ask users for passwords, OTPs, or financial credentials, and will never automatically load or visit untrusted destination URLs.
+TraceLens is built for defensive security awareness. Never paste one-time codes, banking PINs, passwords, or payment details into a scan. Email/password accounts in this prototype are device-local and are not backed by server identity; scan history is also device-local. Do not use these demo credentials as a production account. Team/family sharing, cross-device history, screenshot OCR, live scam trend feeds, and subscription billing need additional backend and provider integrations. The app does not automatically load or visit untrusted destination URLs.
