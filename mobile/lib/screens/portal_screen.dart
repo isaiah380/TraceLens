@@ -498,12 +498,17 @@ class _AuthScreenState extends State<AuthScreen> {
 
   void _showGoogleError(Object error) {
     if (!mounted) return;
-    final message = error.toString().contains('client') ||
-            error.toString().contains('Client')
-        ? 'Google sign-in is not configured yet. Add your OAuth client ID and authorized app origin.'
-        : 'Google sign-in could not be completed. Please try again.';
-    ScaffoldMessenger.of(context)
-        .showSnackBar(SnackBar(content: Text(message)));
+    final detail = error.toString().split('\n').first;
+    final lower = detail.toLowerCase();
+    final message = lower.contains('client') || lower.contains('config')
+        ? 'Google OAuth configuration failed. Check that the Android OAuth client uses package com.example.tracelens and the APK signing SHA-1. Details: $detail'
+        : lower.contains('cancel')
+            ? 'Google cancelled sign-in. If you did not cancel it, check the Android package, signing SHA-1 and Google OAuth test-user settings. Details: $detail'
+            : 'Google sign-in failed. Check the Android OAuth package/SHA-1 and Google OAuth test-user settings. Details: $detail';
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(message, maxLines: 5, overflow: TextOverflow.ellipsis),
+      duration: const Duration(seconds: 12),
+    ));
   }
 
   Future<void> _startGoogleSignIn() async {

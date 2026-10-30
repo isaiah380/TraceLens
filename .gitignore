@@ -47,6 +47,10 @@ mobile/build/
 mobile/android/app/build/
 mobile/android/.gradle/
 
+# Generated presentation previews and validation staging
+/presentation-build/
+/.codex-finalizer/
+
 # SQLite databases
 *.db
 *.sqlite

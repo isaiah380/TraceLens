@@ -28,7 +28,13 @@ class AppConfig {
 
   /// Set this to the Web OAuth client ID from Google Cloud Console.
   /// The same Web client ID can be passed as serverClientId on Android.
-  static const String googleWebClientId = String.fromEnvironment('GOOGLE_WEB_CLIENT_ID');
+  static const String googleWebClientId = String.fromEnvironment(
+    'GOOGLE_WEB_CLIENT_ID',
+    // Keep Android APK builds working when the optional dart-define is omitted.
+    // This must match the Web OAuth client configured for this app.
+    defaultValue:
+        '316031895940-2d9mkitnrg6pl3lrbgrnt3s8kup3vgt3.apps.googleusercontent.com',
+  );
 
   // Request timeout duration
   static const Duration timeoutDuration = Duration(seconds: 12);

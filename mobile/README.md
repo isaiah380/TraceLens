@@ -28,10 +28,19 @@ Google Sign-In is integrated through Flutter's `google_sign_in` plugin. To enabl
    flutter run -d chrome --web-hostname localhost --web-port 7357
    ```
 
-4. For Android, add an Android OAuth client using package name `com.example.tracelens` and your development signing certificate SHA-1. Pass the Web client ID as `GOOGLE_WEB_CLIENT_ID` when launching:
+4. In the **same Google Cloud project**, create both a Web application OAuth client and an Android OAuth client. For Android, use:
+
+   - Package name: `com.example.tracelens` (from `android/app/build.gradle.kts`)
+   - SHA-1: the certificate used to sign the APK installed on the phone
+
+   This project currently signs release APKs with the debug keystore. On this development machine its SHA-1 is `9D:3E:F2:CF:DA:F9:D0:9A:A8:E4:8D:FE:3B:09:6E:D6:F8:7B:AB:0A`. If you switch to a private release key or Google Play App Signing, create another Android OAuth client using that signing certificate's SHA-1.
+
+The app now uses the Web client ID in `web/index.html` as the Android `serverClientId` by default. You can override it when building if needed:
 
    ```powershell
-   flutter run --dart-define=GOOGLE_WEB_CLIENT_ID=your-web-client-id.apps.googleusercontent.com
+   flutter build apk --release --dart-define=GOOGLE_WEB_CLIENT_ID=your-web-client-id.apps.googleusercontent.com
    ```
+
+If the Google consent screen is in **Testing** mode, add the Google account used on the phone to its test users. The Android OAuth client uses the package name and signing SHA-1; the Web client ID is passed by the Flutter app as `serverClientId`.
 
 The app stores Google profile fields locally to personalize the interface. Scan history also remains device-local; accounts and history do not sync between devices. A production deployment should verify Google ID tokens on a backend and use server-managed sessions.
