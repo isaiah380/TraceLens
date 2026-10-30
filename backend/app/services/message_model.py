@@ -1,6 +1,6 @@
 import os
 import logging
-from typing import Optional, Dict
+from typing import Any, Dict, Optional
 
 logger = logging.getLogger("tracelens.message_model")
 
